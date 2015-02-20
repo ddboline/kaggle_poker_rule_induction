@@ -86,10 +86,10 @@ def prepare_submission(model, xtrain, ytrain, xtest, ytest):
 if __name__ == '__main__':
     xtrain, ytrain, xtest, ytest = load_data()
     
-    pca = PCA(n_components=2)
-    x_pca = np.vstack([xtrain, xtest])
-    print x_pca.shape
-    pca.fit(x_pca)
+    pca = PCA(n_components=8)
+    #x_pca = np.vstack([xtrain, xtest])
+    #print x_pca.shape
+    pca.fit(xtrain)
     
     xtrain = pca.transform(xtrain)
     xtest = pca.transform(xtest)
