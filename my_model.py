@@ -61,7 +61,7 @@ def compare_models(xtraindata, ytraindata):
     results = {}
     for name, model in classifier_dict.items():
         print name
-        results[name] = test_model(model, xtraindata, ytraindata)
+        results[name] = score_model(model, xtraindata, ytraindata)
         print name, results[name]
     print '\n\n\n'
     for name, result in sorted(results.items(), key=lambda x: x[1]):
