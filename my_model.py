@@ -87,7 +87,9 @@ if __name__ == '__main__':
     xtrain, ytrain, xtest, ytest = load_data()
     
     pca = PCA(n_components=4)
-    pca.fit(xtrain+xtest)
+    x_pca = np.vstack([xtrain, xtest])
+    print x_pca.shape
+    pca.fit(x_pca)
     
     xtrain = pca.transform(xtrain)
     xtest = pca.transform(xtest)
