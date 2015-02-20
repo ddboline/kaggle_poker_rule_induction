@@ -46,17 +46,21 @@ def compare_models(xtraindata, ytraindata):
     from sklearn.qda import QDA
 
     classifier_dict = {
-                'linSVC': LinearSVC(),
-                'kNC5': KNeighborsClassifier(),
-                'kNC6': KNeighborsClassifier(6),
-                'SVC': SVC(kernel="linear", C=0.025),
-                'DT': DecisionTreeClassifier(max_depth=5),
-                'RF': RandomForestClassifier(n_estimators=200),
-                'Ada': AdaBoostClassifier(),
-                'Gauss': GaussianNB(),
-                'LDA': LDA(),
-                'QDA': QDA(),
-                'SVC2': SVC(),}
+                #'linSVC': LinearSVC(),
+                #'kNC5': KNeighborsClassifier(),
+                #'kNC6': KNeighborsClassifier(6),
+                #'SVC': SVC(kernel="linear", C=0.025),
+                #'DT': DecisionTreeClassifier(max_depth=5),
+                'RF200': RandomForestClassifier(n_estimators=200),
+                'RF400': RandomForestClassifier(n_estimators=400),
+                'RF800': RandomForestClassifier(n_estimators=800),
+                'RF1000': RandomForestClassifier(n_estimators=1000),
+                #'Ada': AdaBoostClassifier(),
+                #'Gauss': GaussianNB(),
+                #'LDA': LDA(),
+                #'QDA': QDA(),
+                #'SVC2': SVC(),
+                }
 
     results = {}
     for name, model in classifier_dict.items():
