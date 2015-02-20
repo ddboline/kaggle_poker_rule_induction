@@ -73,11 +73,20 @@ def compare_models(xtraindata, ytraindata):
 
 
 def prepare_submission(model, xtrain, ytrain, xtest, ytest):
+    model.fit(xtrain, ytrain)
+    ytest2 = model.predict(xtest)
+    ids = ytest
+    
+    df = pd.DataFrame({'id': ids, 'hand': ytest2}, columns=('id','hand'))
+    df.to_csv('submission.csv', index=False)
+    
     return
 
 if __name__ == '__main__':
     xtrain, ytrain, xtest, ytest = load_data()
-    compare_models(xtrain, ytrain)
-    #model = RandomForestClassifier(n_estimators=400, n_jobs=-1)
-    #print 'score', score_model(model, xtrain, ytrain)
-    #print model.feature_importances_
+    #compare_models(xtrain, ytrain)
+    model = RandomForestClassifier(n_estimators=400, n_jobs=-1)
+    print 'score', score_model(model, xtrain, ytrain)
+    print model.feature_importances_
+    prepare_submission(model, xtrain, ytrain, xtest, ytest)
+    
