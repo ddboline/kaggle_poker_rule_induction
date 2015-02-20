@@ -10,6 +10,7 @@ import pandas as pd
 
 from sklearn import cross_validation
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.decomposition import PCA
 
 def load_data():
     train_df = pd.read_csv('train.csv')
@@ -84,6 +85,13 @@ def prepare_submission(model, xtrain, ytrain, xtest, ytest):
 
 if __name__ == '__main__':
     xtrain, ytrain, xtest, ytest = load_data()
+    
+    pca = PCA(n_components=4)
+    pca.fit(xtrain+xtest)
+    
+    xtrain = pca.transform(xtrain)
+    xtest = pca.transform(xtest)
+    
     #compare_models(xtrain, ytrain)
     model = RandomForestClassifier(n_estimators=400, n_jobs=-1)
     print 'score', score_model(model, xtrain, ytrain)
