@@ -80,4 +80,4 @@ if __name__ == '__main__':
     #compare_models(xtrain, ytrain)
     model = RandomForestClassifier(n_estimators=400, n_jobs=-1)
     print 'score', score_model(model, xtrain, ytrain)
-    print dir(model)
+    print model.feature_importances_
